@@ -34,11 +34,11 @@ function setCanvasSize() {
 }
 
 function renderMap() {
-	canvasSize = canvasSize; // Math.round();
+	canvasSize = Math.trunc(canvasSize);
 	canvas.setAttribute("width", canvasSize);
 	canvas.setAttribute("height", canvasSize);
 	
-	gridSize = canvasSize / 10;
+	gridSize = Math.trunc(canvasSize / 10);
 	elementsSize = gridSize;
 	// console.log( {canvasSize, gridSize, elementsSize} );
 	
@@ -69,7 +69,7 @@ function renderMap() {
 				playerPos.x = posX;
 				playerPos.y = posY;
 				game.fillText(emojis["PLAYER"], playerPos.x, playerPos.y);
-				console.log(playerPos);
+				console.log(showInGridMeasures(playerPos));
 			}
 		})
 	});
@@ -87,7 +87,7 @@ function movePlayer(direction) {
 				playerPos.y -= gridSize;
 				renderPlayer();
 			}
-			console.log(playerPos);
+			console.log(showInGridMeasures(playerPos));
 			break;
 			
 		case "left":
@@ -95,7 +95,7 @@ function movePlayer(direction) {
 				playerPos.x -= gridSize;
 				renderPlayer();
 			}
-			console.log(playerPos);
+			console.log(showInGridMeasures(playerPos));
 			break;
 			
 		case "right":
@@ -103,7 +103,7 @@ function movePlayer(direction) {
 				playerPos.x += gridSize;
 				renderPlayer();
 			}
-			console.log(playerPos);
+			console.log(showInGridMeasures(playerPos));
 			break;
 			
 		case "down":
@@ -111,7 +111,7 @@ function movePlayer(direction) {
 				playerPos.y += gridSize;
 				renderPlayer();
 			}
-			console.log(playerPos);
+			console.log(showInGridMeasures(playerPos));
 			break;
 	}
 }
@@ -120,19 +120,19 @@ function moveByClicks(clickEvent) {
 	switch (clickEvent.target.id) {
 		case "up":
 			movePlayer("up");
-			console.log("arriba");
+			// console.log("arriba");
 			break;
 		case "left":
 			movePlayer("left");
-			console.log("izquierda");
+			// console.log("izquierda");
 			break;
 		case "right":
 			movePlayer("right");
-			console.log("derecha");
+			// console.log("derecha");
 			break;
 		case "down":
 			movePlayer("down");
-			console.log("abajo");
+			// console.log("abajo");
 			break;
 	}
 };
@@ -141,37 +141,44 @@ function moveByKeys(keyEvent) {
 	switch (keyEvent.code){
 		case "ArrowUp":
 			movePlayer("up");
-			console.log("arriba");
+			// console.log("arriba");
 			break;
 		case "ArrowLeft":
 			movePlayer("left");
-			console.log("izquierda");
+			// console.log("izquierda");
 			break;
 		case "ArrowRight":
 			movePlayer("right");
-			console.log("derecha");
+			// console.log("derecha");
 			break;
 		case "ArrowDown":
 			movePlayer("down");
-			console.log("abajo");
+			// console.log("abajo");
 			break;
 			
 			
 		case "KeyW":
 			movePlayer("up");
-			console.log("arriba");
+			// console.log("arriba");
 			break;
 		case "KeyA":
 			movePlayer("left");
-			console.log("izquierda");
+			// console.log("izquierda");
 			break;
 		case "KeyD":
 			movePlayer("right");
-			console.log("derecha");
+			// console.log("derecha");
 			break;
 		case "KeyS":
 			movePlayer("down");
-			console.log("abajo");
+			// console.log("abajo");
 			break;
 	}
+}
+
+function showInGridMeasures(itemPosition) {
+	return {
+		x: (itemPosition.x / gridSize) + 1,
+		y: (itemPosition.y / gridSize)
+	};
 }
