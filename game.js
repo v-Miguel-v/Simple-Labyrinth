@@ -238,7 +238,7 @@ function endGame(wonOrLost) {
 			game.clearRect(0,0, canvasSize, canvasSize);
 			showGameWonMenu();
 			
-			if (totalGameTime < currentRecord) {
+			if (totalGameTime < currentRecord || currentRecord === 0) {
 				currentRecord = totalGameTime;
 				localStorage.setItem("record", totalGameTime);
 				recordShown.innerText = formatSeconds(currentRecord);
