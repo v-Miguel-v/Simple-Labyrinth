@@ -7,26 +7,26 @@
   <link rel="stylesheet" href="./styles.css">
   <title>Simple Labyrinth</title>
 </head>
-<body>
-  <div class="game-container">
-    <canvas id="game"></canvas>
-    
-    <div class="movement-btns">
-      <button id="up">▲</button>
-      <button id="left">◀</button>
-      <button id="right">▶</button>
-      <button id="down">▼</button>
-    </div>
+<body class="body">
+  <section class="game-screen-container">
+	  <canvas class="game-screen" id="game"></canvas>
+  </section>
+	
+    <section class="movement-btns-container">
+      <button id="up" class="movement-btn movement-btn--up">▲</button>
+      <button id="left" class="movement-btn movement-btn--left">◀</button>
+      <button id="right" class="movement-btn movement-btn--right">▶</button>
+      <button id="down" class="movement-btn movement-btn--down">▼</button>
+    </section>
 
-    <div class="info">
-      <p>Vidas: <span id="lives"></span></p>
-      <p>Tiempo: ⌛ <span id="time"></span></p>
-      <p>Record: 🏁 <span id="record"></span></p>
-    </div>
-  </div>
+    <section class="game-stats-container">
+      <p class="a-game-stat">Vidas: <span class="a-game-stat--lives" id="lives"></span></p>
+      <p class="a-game-stat">Tiempo: ⌛ <span class="a-game-stat--time" id="time"></span></p>
+      <p class="a-game-stat">Record: 🏁 <span class="a-game-stat--record" id="record"></span></p>
+    </section>
 
-  <script src="./menu.js"></script>
   <script src="./maps.js"></script>
+  <script src="./menus.js"></script>
   <script src="./game.js"></script>
 </body>
 </html>
